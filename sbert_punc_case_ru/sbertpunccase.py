@@ -77,8 +77,8 @@ def decode_label(label, classes="all"):
 
 
 class SbertPuncCase(nn.Module):
-    def __init__(self):
-        super().__init__(model_repo="kontur-ai/sbert_punc_case_ru")
+    def __init__(self, model_repo="kontur-ai/sbert_punc_case_ru"):
+        super().__init__()
 
         self.tokenizer = AutoTokenizer.from_pretrained(model_repo, strip_accents=False)
         self.model = AutoModelForTokenClassification.from_pretrained(model_repo)

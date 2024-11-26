@@ -73,15 +73,15 @@ def decode_label(label, classes="all"):
         return INVERSE_LABELS[label]
 
 
-MODEL_REPO = "kontur-ai/sbert_punc_case_ru"
+#MODEL_REPO = "kontur-ai/sbert_punc_case_ru"
 
 
 class SbertPuncCase(nn.Module):
     def __init__(self):
-        super().__init__()
+        super().__init__(model_repo="kontur-ai/sbert_punc_case_ru")
 
-        self.tokenizer = AutoTokenizer.from_pretrained(MODEL_REPO, strip_accents=False)
-        self.model = AutoModelForTokenClassification.from_pretrained(MODEL_REPO)
+        self.tokenizer = AutoTokenizer.from_pretrained(model_repo, strip_accents=False)
+        self.model = AutoModelForTokenClassification.from_pretrained(model_repo)
         self.model.eval()
 
     def forward(self, input_ids, attention_mask):
